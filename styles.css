@@ -1,3 +1,19 @@
 body {
   background-color:rgba(100, 148, 237, 0.739);
 }
+td {
+   color: whitesmoke;
+}
+#download-btn {
+  color: whitesmoke;
+}
+tr th
+{
+  color: rgb(255, 255, 255);
+  font-size: 50px;
+}
+#input-file
+{
+  color: rgb(255, 255, 255);
+}
+

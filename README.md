@@ -1,1 +1,1 @@
-# Image-Resizer-OpenCV-Website
+# Image-Resizer-OpenCV-Website-

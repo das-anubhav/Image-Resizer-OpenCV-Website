@@ -1,56 +1,24 @@
-// const srcImg = document.getElementById('src-image');
-// const hiddenImg = document.getElementById('hidden-image');
-// const fileInput = document.getElementById('input-file');
-// const canvas = document.getElementById('dest-canvas');
-// const hiddenCanvas = document.getElementById('hidden-canvas');
-// const grayScaleBtn = document.getElementById('gray-scale-btn');
-// const downloadBtn = document.getElementById('download-btn');
 
-var height =document.getElementById('height').value;
-var width = document.getElementById('width').value;
+var h;
+var w;
 
-
-
-
-
-const srcImg = document.getElementById('src-image');
+var srcImg = document.getElementById('src-image');
 const hiddenImg = document.getElementById('hidden-image');
 const fileInput = document.getElementById('input-file');
 const canvas = document.getElementById('dest-canvas');
 const hiddenCanvas = document.getElementById('hidden-canvas');
 const grayScaleBtn = document.getElementById('gray-scale-btn');
-const lineDrawBtn = document.getElementById('linedraw-btn');
 const downloadBtn = document.getElementById('download-btn');
 
 function convertImageToGray(img) {
+
     let dst = new cv.Mat();
-    let size = cv. Size(100,100);
-    cv.cvtColor(img, dst, cv.COLOR_RGBA2GRAY, 0);
-    // cv.resize(img,dst,fx=2, fy=2, interpolation = cv.INTER_CUBIC);
-    // cv.resize(img,dst,fx=2, fy=2, interpolation = cv.INTER_CUBIC);
-    // let dim1 = new cv.Size(width, height);
-    // cv.resize(img,dst,);
+    let dsize = new cv.Size(h,w);
+    cv.resize(img, dst, dsize, 0, 0, cv.INTER_AREA);
+
     return dst;
 }
 
-function convertImageToLineDrawing(img) {
-    const kernel = cv.getStructuringElement(cv.MORPH_RECT,new cv.Size(5,5));
-
-    const resiz1 = cv.Size(height,width);
-
-    const imgGray = new cv.Mat();
-    cv.cvtColor(img, imgGray, cv.COLOR_RGBA2GRAY);
-
-    const imgDilated = new cv.Mat();
-    cv.dilate(imgGray, imgDilated, kernel, new cv.Point(-1, 1), 1);
-
-    const imgDiff = new cv.Mat();
-    cv.absdiff(imgDilated, imgGray, imgDiff);
-
-    const contour = new cv.Mat();
-    cv.bitwise_not(imgDiff, contour);
-    return contour;
-}
 
 function dataUriToBlob(dataUri) {
     const b64 = atob(dataUri.split(',')[1]);
@@ -77,22 +45,18 @@ grayScaleBtn.addEventListener('click', e => {
     hiddenDst.delete();
 });
 
-lineDrawBtn.addEventListener('click', e => {
-    const src = cv.imread(srcImg);
-    const dst = convertImageToLineDrawing(src);
-    cv.imshow('dest-canvas', dst);
-    src.delete();
-    dst.delete();
-
-    const hiddenSrc = cv.imread(hiddenImg);
-    const hiddenDst = convertImageToLineDrawing(hiddenSrc);
-    cv.imshow('hidden-canvas', hiddenDst);
-    hiddenSrc.delete();
-    hiddenDst.delete();
-});
 
 downloadBtn.addEventListener('click', e => {
     const data = hiddenCanvas.toDataURL();
     const url = URL.createObjectURL(dataUriToBlob(data));
     downloadBtn.href = url;
 });        
+
+
+
+document.getElementById("gray-scale-btn").addEventListener('click', ()=>{
+    var height = document.querySelector('#ht').value;
+    var width = document.querySelector('#wt').value;
+    h=parseInt(height);
+    w=parseInt(width);
+})

@@ -1,44 +1,24 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
 
 
-<html>
-    <head class="menu-bar">
-        <title>OpenCV Image Resizer Assignment</title>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="styles.css">
-        <script async src="opencv.js"></script>
-    </head>
-
-    <body>
-        
-       
-
- 
-
-          <script src="main.js"></script>
-
-    </body>
-
-</html>     -->
-
-
+<!DOCTYPE html>
 <html>
     <head>
         <title>OpenCV Image Resizer Assignment</title>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <link rel="stylesheet" href="styles.css">
     </head>
     <body>
+        
+
         <table>
             <tr>
-                <th>source</th>
-                <th>output</th>
+                <th>Source</th>
+                <th>Output</th>
             </tr>
             <tr>
                 <td>
-                    <img src="photo.png" id="src-image" style="width: 400px;" />
+                    <img src="photo.png" id="src-image" style="width: 500px;"/>
                     <img id="hidden-image" src="photo.png" style="display: none;" />
                 </td>
                 <td>
@@ -52,26 +32,17 @@
                 </td>
                 <td>
                     
-                        <input type="number" id="height" placeholder="height"> : <input type="number" id="width" placeholder="width">
-                    
-                    <input type="button" value="Black & White" id="gray-scale-btn" />
-                    <input type="button" value="Change" id="linedraw-btn" />
+                    <br>
+                <input type="number" placeholder="heigth" id="ht" />
+                <input type="number" placeholder="width" id="wt" />
+                    <br>
+                    <input type="button" value="Resize" id="gray-scale-btn" />
                     <a href="#" id="download-btn" download="converted.png">Download</a>
                 </td>
+                
             </tr>
         </table>
         
-   
-        
-        <!-- ///////////////////// -->
-
-
-
-
-
-
-
-        <!-- ///////////////////// -->
 
 
 
